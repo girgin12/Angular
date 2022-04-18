@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+	<meta charset="utf-8" />
+    <style>
+        td, th {
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <!-- ng-model ng-init ng-bind -->
+    <!-- ng-show  ng-hide ng-if   ng-repeat -->
+
+    <!--
+    <input type="number" ng-model="gun"/><br />
+    <span ng-show="gun != undefined">bugün günlerden </span>
+
+    <span ng-show="gun == 1">Pazartesi</span>
+    <span ng-show="gun == 2">Salı</span>
+    <span ng-show="gun == 3">Çarşamba</span>
+    <span ng-show="gun == 4">Perşembe</span>
+    <span ng-show="gun == 5">Cuma</span>
+    <span ng-show="gun == 6">Cumartesi</span>
+    <span ng-show="gun == 7">Pazar</span>
+
+        -->
+    <!--
+    <input type="number" ng-model="gun" /><br />
+    <span ng-show="gun != undefined">bugün günlerden </span>
+
+    <span ng-show="gun % 7 == 1">Pazartesi</span>
+    <span ng-show="gun % 7 == 2">Salı</span>
+    <span ng-show="gun % 7 == 3">Çarşamba</span>
+    <span ng-show="gun % 7 == 4">Perşembe</span>
+    <span ng-show="gun % 7 == 5">Cuma</span>
+    <span ng-show="gun % 7 == 6">Cumartesi</span>
+    <span ng-show="gun % 7 == 0">Pazar</span>
+        -->
+    <span ng-init="ogrenciler = [{ adsoyad:'Berkant Evren', vize:70, final:40 },
+    { adsoyad:'Burak Sağlam', vize:50, final:80 },
+    { adsoyad:'Furkan Baloğlu', vize:30, final:40 },
+    { adsoyad:'İrem Tuna', vize:10, final:100 },
+    { adsoyad:'Rumeysa Kısaoğlu', vize:50, final:50 },
+    { adsoyad:'Sıla Aksu', vize:70, final:30 },
+    { adsoyad:'Yusuf İslam Malkoç', vize:50, final:60 },
+    { adsoyad:'Zafercan Cebeci', vize:80, final:40 }]"></span>
+    <div style="width:50%; float:left">
+        <h1>GEÇENLER</h1>
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Vize Notu</th>
+                <th>Final Notu</th>
+                <th>Ortalama</th>
+            </tr>
+            <tr ng-repeat="x in ogrenciler" ng-hide="x.ortalama < 50 || x.final < 50">
+                <td>{{x.adsoyad}}</td>
+                <td>{{x.vize}}</td>
+                <td>{{x.final}}</td>
+                <td>{{x.ortalama = (x.vize * 0.4) + (x.final * 0.6)}}</td>
+            </tr>
+        </table>
+        <hr />
+        <h1>KALANLAR</h1>
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Vize Notu</th>
+                <th>Final Notu</th>
+                <th>Ortalama</th>
+            </tr>
+            <tr ng-repeat="x in ogrenciler" ng-hide="x.ortalama > 49 && x.final > 49">
+                <td>{{x.adsoyad}}</td>
+                <td>{{x.vize}}</td>
+                <td>{{x.final}}</td>
+                <td>{{x.ortalama = (x.vize * 0.4) + (x.final * 0.6)}}</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width:50%; float:right">
+        <h1>TÜM ÖĞRENCİLER</h1>
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Vize Notu</th>
+                <th>Final Notu</th>
+                <th>Ortalama</th>
+                <th>Geçme Durumu</th>
+            </tr>
+            <tr ng-repeat="x in ogrenciler">
+                <td>{{x.adsoyad}}</td>
+                <td>{{x.vize}}</td>
+                <td>{{x.final}}</td>
+                <td>{{x.ortalama = (x.vize * 0.4) + (x.final * 0.6)}}</td>
+                <td>
+                    <span ng-if="x.ortalama > 49 && x.final > 49" style="color:green;">Geçti</span>
+                    <span ng-if="x.ortalama < 50 || x.final < 50" style="color:red">Kaldı</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

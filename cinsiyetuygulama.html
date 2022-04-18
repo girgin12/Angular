@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="">
+    <div style="width:50%; float:left">
+        <span ng-init="kullanicilar = [{as:'Serkan TELCİ', c:'e'},{as:'Ayşe VELİ', c:'k'} ]"></span>
+        <input type="text" ng-model="adsoyad" placeholder="ad soyad giriniz" /><br />
+        <input type="text" ng-model="cinsiyet" placeholder="cinsiyet giriniz e | k" /><br />
+        <button ng-click="kullanicilar.push({as:adsoyad, c:cinsiyet}); adsoyad=''; cinsiyet=''">EKLE</button>
+    </div>
+    <div style="width:50%; float:right">
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Cinsiyet</th>
+                <th>Sil</th>
+            </tr>
+            <tr ng-repeat="x in kullanicilar">
+                <td>{{x.as}}</td>
+                <td style="color:{{x.c == 'e' ? 'blue':'pink'}};">{{x.c == 'e' ? 'Erkek': 'Kadın'}}</td>
+                <td><button style="background-color:red" ng-click="kullanicilar.splice($index,1)">X</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

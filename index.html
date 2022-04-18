@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="angular.min.js"></script>
+    <style>
+        td, th {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<!-- ng-app=""   angularjs hangi etiketler içerisinde çalışsın? -->
+<body ng-app="">
+    <!-- ng-model kullanıcı giriş alanlarını okumak için
+    <input type="text" ng-model="kadi"/><br />
+    {{kadi}}-->
+    <!-- ng-init başlangıçta bir kez çalışır
+    <input type="text" ng-model="kadi" ng-init="kadi='serkan'" /><br />
+    {{kadi}}-->
+    <!-- ng-bind arka planda sürekli çalışır
+    <input type="text" ng-model="kadi" ng-bind="kadi='serkan'" /><br />
+    {{kadi}}-->
+    <!-- ng-show içerisine yazılan şart doğru ise elemanı göster
+    <div ng-show="1 == 1">BİRİNCİ DİV</div>
+    <div ng-show="2 > 5">İKİNCİ DİV</div>
+
+    <input type="text" ng-model="kadi" placeholder="Kullanıcı adı giriniz"/><br />
+    <button ng-show="kadi.length > 2">GİRİŞ YAP</button> -->
+    <!-- ng-hide içerisine yazılan şart doğru ise elemanı gizle
+    <div ng-hide="1 == 1">BİRİNCİ DİV</div>
+    <div ng-hide="2 > 5">İKİNCİ DİV</div>
+
+    <input type="text" ng-model="kadi" placeholder="Kullanıcı adı giriniz" /><br />
+    <button ng-hide="kadi == undefined || kadi.length < 3">GİRİŞ YAP</button> -->
+
+
+    <!-- ng-if  kullanım olarak ng-show ile aynı
+        Güvenlik gereken yerlerde kullanılmalı (sayfa kodu içerisinde görünmüyor)
+
+
+    ng-if <br />
+    <div ng-if="1 == 1">BİRİNCİ DİV</div>
+    <div ng-if="2 > 5">İKİNCİ DİV</div>
+
+    cinsiyetinizi e - k şeklinde giriniz
+    <input type="text" ng-model="cinsiyet"/><br />
+    cinsiyetiniz
+    <span ng-if="cinsiyet == 'e'">Erkek</span>
+    <span ng-if="cinsiyet == 'k'">Kadın</span>
+
+    <input type="text" ng-model="kadi" placeholder="Kullanıcı Adınızı Giriniz"/>
+    <button ng-show="kadi.length > 2">GİRİŞ YAP</button>
+    <button ng-if="kadi == 'admin1234'">YÖNETİCİ GİRİŞİ</button>-->
+    <!-- ng-repeat
+
+    <span ng-init="dizi = ['a', 'b', 'c', 'd', 'e', 'f', 'g']"></span>
+    <ol>
+        <li ng-repeat="x in dizi">
+            {{x}}
+        </li>
+    </ol>
+
+
+    <table>
+        <tr ng-repeat="x in dizi">
+            <td>{{$index + 1}}.</td>
+            <td>{{x}}</td>
+        </tr>
+    </table> -->
+    <!--
+    <span ng-init="dizi = [{kadi:'serkan', sifre:123}
+          , {kadi:'ali', sifre:345}];"></span>
+    
+    <ul>
+        <li ng-repeat="x in dizi">
+            {{x.kadi}} {{x.sifre}}
+        </li>
+    </ul> 
+
+    <table>
+        <tr>
+            <th>Sıra</th>
+            <th>Kullanıcı</th>
+            <th>Şifre</th>
+        </tr>
+        <tr ng-repeat="x in dizi">
+            <td>{{$index+1}}</td>
+            <td>{{x.kadi}}</td>
+            <td>{{x.sifre}}</td>
+        </tr>
+    </table>-->
+    <!-- üçlü operatör ve ng-repeat örneği (url : "https://jsonplaceholder.typicode.com/")
+        
+    <span ng-init="users = [
+  {
+    'id': 1,
+    'name': 'Leanne Graham',
+    'username': 'Bret',
+    'email': 'Sincere@april.biz',
+    'address': {
+      'street': 'Kulas Light',
+      'suite': 'Apt. 556',
+      'city': 'Gwenborough',
+      'zipcode': '92998-3874',
+      'geo': {
+        'lat': '-37.3159',
+        'lng': '81.1496'
+      }
+    },
+    'phone': '1-770-736-8031 x56442',
+    'website': 'hildegard.org',
+    'company': {
+      'name': 'Romaguera-Crona',
+      'catchPhrase': 'Multi-layered client-server neural-net',
+      'bs': 'harness real-time e-markets'
+    }
+  },
+  {
+    'id': 2,
+    'name': 'Ervin Howell',
+    'username': 'Antonette',
+    'email': 'Shanna@melissa.tv',
+    'address': {
+      'street': 'Victor Plains',
+      'suite': 'Suite 879',
+      'city': 'Wisokyburgh',
+      'zipcode': '90566-7771',
+      'geo': {
+        'lat': '-43.9509',
+        'lng': '-34.4618'
+      }
+    },
+    'phone': '010-692-6593 x09125',
+    'website': 'anastasia.net',
+    'company': {
+      'name': 'Deckow-Crist',
+      'catchPhrase': 'Proactive didactic contingency',
+      'bs': 'synergize scalable supply-chains'
+    }
+  },
+  {
+    'id': 3,
+    'name': 'Clementine Bauch',
+    'username': 'Samantha',
+    'email': 'Nathan@yesenia.net',
+    'address': {
+      'street': 'Douglas Extension',
+      'suite': 'Suite 847',
+      'city': 'McKenziehaven',
+      'zipcode': '59590-4157',
+      'geo': {
+        'lat': '-68.6102',
+        'lng': '-47.0653'
+      }
+    },
+    'phone': '1-463-123-4447',
+    'website': 'ramiro.info',
+    'company': {
+      'name': 'Romaguera-Jacobson',
+      'catchPhrase': 'Face to face bifurcated interface',
+      'bs': 'e-enable strategic applications'
+    }
+  },
+  {
+    'id': 4,
+    'name': 'Patricia Lebsack',
+    'username': 'Karianne',
+    'email': 'Julianne.OConner@kory.org',
+    'address': {
+      'street': 'Hoeger Mall',
+      'suite': 'Apt. 692',
+      'city': 'South Elvis',
+      'zipcode': '53919-4257',
+      'geo': {
+        'lat': '29.4572',
+        'lng': '-164.2990'
+      }
+    },
+    'phone': '493-170-9623 x156',
+    'website': 'kale.biz',
+    'company': {
+      'name': 'Robel-Corkery',
+      'catchPhrase': 'Multi-tiered zero tolerance productivity',
+      'bs': 'transition cutting-edge web services'
+    }
+  },
+  {
+    'id': 5,
+    'name': 'Chelsey Dietrich',
+    'username': 'Kamren',
+    'email': 'Lucio_Hettinger@annie.ca',
+    'address': {
+      'street': 'Skiles Walks',
+      'suite': 'Suite 351',
+      'city': 'Roscoeview',
+      'zipcode': '33263',
+      'geo': {
+        'lat': '-31.8129',
+        'lng': '62.5342'
+      }
+    },
+    'phone': '(254)954-1289',
+    'website': 'demarco.info',
+    'company': {
+      'name': 'Keebler LLC',
+      'catchPhrase': 'User-centric fault-tolerant solution',
+      'bs': 'revolutionize end-to-end systems'
+    }
+  },
+  {
+    'id': 6,
+    'name': 'Mrs. Dennis Schulist',
+    'username': 'Leopoldo_Corkery',
+    'email': 'Karley_Dach@jasper.info',
+    'address': {
+      'street': 'Norberto Crossing',
+      'suite': 'Apt. 950',
+      'city': 'South Christy',
+      'zipcode': '23505-1337',
+      'geo': {
+        'lat': '-71.4197',
+        'lng': '71.7478'
+      }
+    },
+    'phone': '1-477-935-8478 x6430',
+    'website': 'ola.org',
+    'company': {
+      'name': 'Considine-Lockman',
+      'catchPhrase': 'Synchronised bottom-line interface',
+      'bs': 'e-enable innovative applications'
+    }
+  },
+  {
+    'id': 7,
+    'name': 'Kurtis Weissnat',
+    'username': 'Elwyn.Skiles',
+    'email': 'Telly.Hoeger@billy.biz',
+    'address': {
+      'street': 'Rex Trail',
+      'suite': 'Suite 280',
+      'city': 'Howemouth',
+      'zipcode': '58804-1099',
+      'geo': {
+        'lat': '24.8918',
+        'lng': '21.8984'
+      }
+    },
+    'phone': '210.067.6132',
+    'website': 'elvis.io',
+    'company': {
+      'name': 'Johns Group',
+      'catchPhrase': 'Configurable multimedia task-force',
+      'bs': 'generate enterprise e-tailers'
+    }
+  },
+  {
+    'id': 8,
+    'name': 'Nicholas Runolfsdottir V',
+    'username': 'Maxime_Nienow',
+    'email': 'Sherwood@rosamond.me',
+    'address': {
+      'street': 'Ellsworth Summit',
+      'suite': 'Suite 729',
+      'city': 'Aliyaview',
+      'zipcode': '45169',
+      'geo': {
+        'lat': '-14.3990',
+        'lng': '-120.7677'
+      }
+    },
+    'phone': '586.493.6943 x140',
+    'website': 'jacynthe.com',
+    'company': {
+      'name': 'Abernathy Group',
+      'catchPhrase': 'Implemented secondary concept',
+      'bs': 'e-enable extensible e-tailers'
+    }
+  },
+  {
+    'id': 9,
+    'name': 'Glenna Reichert',
+    'username': 'Delphine',
+    'email': 'Chaim_McDermott@dana.io',
+    'address': {
+      'street': 'Dayna Park',
+      'suite': 'Suite 449',
+      'city': 'Bartholomebury',
+      'zipcode': '76495-3109',
+      'geo': {
+        'lat': '24.6463',
+        'lng': '-168.8889'
+      }
+    },
+    'phone': '(775)976-6794 x41206',
+    'website': 'conrad.com',
+    'company': {
+      'name': 'Yost and Sons',
+      'catchPhrase': 'Switchable contextually-based project',
+      'bs': 'aggregate real-time technologies'
+    }
+  },
+  {
+    'id': 10,
+    'name': 'Clementina DuBuque',
+    'username': 'Moriah.Stanton',
+    'email': 'Rey.Padberg@karina.biz',
+    'address': {
+      'street': 'Kattie Turnpike',
+      'suite': 'Suite 198',
+      'city': 'Lebsackbury',
+      'zipcode': '31428-2261',
+      'geo': {
+        'lat': '-38.2386',
+        'lng': '57.2232'
+      }
+    },
+    'phone': '024-648-3804',
+    'website': 'ambrose.net',
+    'company': {
+      'name': 'Hoeger LLC',
+      'catchPhrase': 'Centralized empowering task-force',
+      'bs': 'target end-to-end models'
+    }
+  }]"></span>
+
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Adı</th>
+            <th>Mail Adresi</th>
+            <th>Şehir</th>
+            <th>Web Sitesi</th>
+        </tr>
+        <tr ng-repeat="x in users" style="color:{{x.username.length < 9 ? 'green' : 'red'}}">
+            <td>{{x.id % 2 == 0 ? 'çift' : 'tek'}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.address.city}}</td>
+            <td>{{x.website}}</td>
+        </tr>
+    </table>
+        -->
+</body>
+</html>
+
+<!--
+    
+
+    şart ? 'doğru' : 'yanlış';
+    3 < 5 ? uyari(doğru) : uyari(yanlış);
+
+
+    if (3 < 5)
+        uyari(doğru)
+    else
+        uyari(yanlış)
+
+
+
+    foreach
+
+    for(int i = 0; i< dizi.length; i++)
+    {
+        dizi[i]
+    }
+
+
+    foreach(sayi in dizi)                    0
+    {                                        1
+        sayi                                 2
+    }                                        3
+
+
+    sayi = 5;
+    dizi = [1, 2, 3, 4, 5];
+    renkler = ["kırmızı", "mavi", "yeşil"];
+
+    aynı veri türünde verileri içermeli
+    köşeli parantezler arasına tanımlanıyor
+    elemanlar virgül ile ayrılıyor
+
+
+    -->

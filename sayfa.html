@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="angular.min.js"></script>
+    <meta charset="utf-8" />
+    <style>
+        td, th {
+            border: 1px double blue;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <!-- ng-click tıklandığında işlem yapılması istenilen elemanlara yazılır,
+        içerisinde işlem yaptırılabilir, fonksiyon tetiklenebilir.
+    <input type="button" value="<<<" ng-click="sayi = sayi-5;" />
+    <input type="button" value="<" ng-click="sayi = sayi-1;"/>
+    <input type="number" ng-model="sayi" ng-init="sayi = 0"/>
+    <input type="button" value=">" ng-click="sayi = sayi+1;"/>
+    <input type="button" value=">>>" ng-click="sayi = sayi+5;" />
+
+    <h1 ng-click="sayi = 0">SIFIRLA</h1>-->
+    <!-- ng-click renk örneği
+    <h1 style="color:{{renk}}">BAŞLIK</h1>
+    R:<input type="text" ng-model="r"/><br />
+    G:<input type="text" ng-model="g" /><br />
+    B:<input type="text" ng-model="b" /><br />
+    <input type="button" value="Rengi Uygula" ng-click="renk = 'rgb('+r+','+g+','+b+')'"/>
+    <input type="button" value="# li renk" ng-click="renk = '#'+r+g+b" />  -->
+    <!--
+        push : dizi içerisine eleman ekleme işlemini yapar
+               eleman dizi içerisindeki formata uygun eklenmeli
+        splice : dizi içerisinden eleman silme işlemi yapar
+               iki adet parametre alır.
+               ilki silme işlemi hangi indexten başlayacak
+               ikincisi kaç eleman silinecek
+
+        -->
+    <!--
+    <div style="width:50%; float:left">
+        <span ng-init="kullanicilar = [{as:'Serkan TELCİ', y:10},{as:'Ali VELİ', y:20} ]"></span>
+        <input type="text" ng-model="adsoyad" placeholder="ad soyad giriniz" /><br />
+        <input type="number" ng-model="yas" placeholder="yaş giriniz"/><br />
+        <button ng-click="kullanicilar.push({as:adsoyad, y:yas}); adsoyad=''; yas=''">EKLE</button>
+    </div>
+    <div style="width:50%; float:right">
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Yaş</th>
+                <th>Sil</th>
+            </tr>
+            <tr ng-repeat="x in kullanicilar">
+                <td>{{x.as}}</td>
+                <td>{{x.y}}</td>
+                <td><button style="background-color:red" ng-click="kullanicilar.splice($index,1)">X</button></td>
+            </tr>
+        </table>
+    </div>-->
+
+
+    <span ng-init="ogrenciler = [{ adsoyad:'Berkant Evren', vize:70, final:40 },
+    { adsoyad:'Burak Sağlam', vize:50, final:80 },
+    { adsoyad:'Furkan Baloğlu', vize:30, final:40 },
+    { adsoyad:'İrem Tuna', vize:10, final:100 },
+    { adsoyad:'Rumeysa Kısaoğlu', vize:50, final:50 },
+    { adsoyad:'Sıla Aksu', vize:70, final:30 },
+    { adsoyad:'Yusuf İslam Malkoç', vize:50, final:60 },
+    { adsoyad:'Zafercan Cebeci', vize:80, final:40 }]"></span>
+    <div style="width:50%; float:left">
+        <table>
+            <tr>
+                <td>Ad Soyad</td>
+                <td><input type="text" ng-model="yadsoyad" /></td>
+            </tr>
+            <tr>
+                <td>Vize</td>
+                <td><input type="number" ng-model="yvize" /></td>
+            </tr>
+            <tr>
+                <td>Final</td>
+                <td><input type="number" ng-model="yfinal" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button style="width:100%; background-color:green"
+                            ng-click="ogrenciler.push({ adsoyad:yadsoyad, vize:yvize, final:yfinal });yadsoyad='';yvize='';yfinal='';">
+                        EKLE
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="width:50%; float:right">
+        <h1>TÜM ÖĞRENCİLER</h1>
+        <table>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Vize Notu</th>
+                <th>Final Notu</th>
+                <th>Ortalama</th>
+                <th>Geçme Durumu</th>
+                <th>Sil</th>
+            </tr>
+            <tr ng-repeat="x in ogrenciler">
+                <td>{{x.adsoyad}}</td>
+                <td>{{x.vize}}</td>
+                <td>{{x.final}}</td>
+                <td>{{x.ortalama = (x.vize * 0.4) + (x.final * 0.6)}}</td>
+                <td>
+                    <span ng-if="x.ortalama > 49 && x.final > 49" style="color:green;">Geçti</span>
+                    <span ng-if="x.ortalama < 50 || x.final < 50" style="color:red">Kaldı</span>
+                </td>
+                <td>
+                    <button style="background-color:red" ng-click="ogrenciler.splice($index,1)">X</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
